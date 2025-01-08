@@ -1,13 +1,18 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { Routes, Route } from 'react-router-dom';
+import './App.css';
+import { ExlusiveNav } from './components/ExlusiveNav';
+import { Home } from './components/Home';
 
 function App() {
-
   return (
-    <h1 className='text-red-500'>Hello</h1>
-  )
+    <div className="w-full h-screen border-2 border-black 2xl:container 2xl:mx-auto">
+      <ExlusiveNav />
+      <Routes>
+        <Route path="/" element={<div></div>} />
+        <Route path="/shopnow" element={<Home/>} />
+      </Routes>
+    </div>
+  );
 }
 
-export default App
+export default App;
