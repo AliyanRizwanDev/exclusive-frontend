@@ -28,7 +28,7 @@ setInputval("")
         </div>
       </div>
 
-      <div className="w-full flex flex-col md:flex-row items-center px-4 sm:px-14 py-4 justify-between">
+      <div className="w-full flex flex-col md:flex-row items-center px-4 md:px-4 sm:px-14 py-4 justify-between">
         <div className="w-full md:w-fit flex flex-col  md:flex-row items-center gap-6 md:gap-14 justify-center md:justify-start">
           <h1 className="text-xl md:text-2xl font-semibold">Exclusive</h1>
           <ul className="flex gap-4 md:gap-8 text-xs lg:text-base items-center font-normal">
@@ -41,7 +41,7 @@ setInputval("")
 
         <div className="w-full md:w-fit mt-4 md:mt-0 flex items-center bg-gray-100 px-3 py-2 rounded-md shadow-sm">
           <input
-            className="bg-transparent text-xs md:text-sm w-full md:w-36 lg:w-56 outline-none placeholder-gray-500 px-2 font-normal capitalize placeholder:font-normal"
+            className="bg-transparent text-xs md:text-sm w-full md:w-36 lg:w-56 outline-none placeholder-gray-500 px-2 font-normal capitalize placeholder:font-normal "
             type="text"
             placeholder="What are you looking for?"
             onChange={(e)=>setInputval(e.target.value)}
