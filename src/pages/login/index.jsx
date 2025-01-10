@@ -14,7 +14,7 @@ export const Login = () => {
   const handleInputVal = () => {
     const emailOrPhoneRegex =
       /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$|^\+?[0-9]{10,15}$/;
-    const passwordRegex = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/;
+   const passwordRegex = /^.{8,}$/; 
 
     if (!formValues.email || !formValues.password) {
       alert("All fields are required!");
