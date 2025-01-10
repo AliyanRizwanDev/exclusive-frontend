@@ -12,14 +12,32 @@ export const Login = () => {
   };
 
   const handleInputVal = () => {
+    const emailOrPhoneRegex =
+      /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$|^\+?[0-9]{10,15}$/;
+    const passwordRegex = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/;
+
     if (!formValues.email || !formValues.password) {
-      alert("Input fields are Empty !");
+      alert("All fields are required!");
       return;
     }
+
+    if (!emailOrPhoneRegex.test(formValues.email)) {
+      alert("Please enter a valid email or phone number!");
+      return;
+    }
+
+    if (!passwordRegex.test(formValues.password)) {
+      alert(
+        "Password must be at least 8 characters long and include both letters and numbers!"
+      );
+      return;
+    }
+
     const formattedValues = Object.entries(formValues)
       .map(([key, value]) => `${key}: ${value}`)
       .join("\n");
     console.log("Input Values:\n" + formattedValues);
+
     setFormValues({
       email: "",
       password: "",
@@ -58,7 +76,7 @@ export const Login = () => {
             />
             <div className="w-full h-fit flex items-center justify-between">
               <button
-                onClick={handleInputVal} 
+                onClick={handleInputVal}
                 className="border py-3 px-10 rounded-md transition-all duration-300 ease-in-out text-white font-medium text-sm bg-[#DB4444] hover:bg-red-400"
               >
                 Log in
