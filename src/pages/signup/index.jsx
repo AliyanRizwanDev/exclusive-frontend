@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { InputField } from "../../components/common/InputField";
 import { Button } from "../../components/common/Button";
 
-export const Index = () => {
+export const SignUp = () => {
   const [formValues, setFormValues] = useState({
     name: "",
     email: "",
