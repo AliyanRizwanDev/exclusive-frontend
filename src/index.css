@@ -7,4 +7,16 @@ body{
     font-optical-sizing: auto;
     font-weight: 700;
     font-style: normal;
+    scroll-behavior: smooth;
 }
+
+
+@layer utilities {
+    .scrollbar-hidden {
+      scrollbar-width: none;
+      -ms-overflow-style: none;
+    }
+    .scrollbar-hidden::-webkit-scrollbar {
+      display: none; 
+    }
+  }
