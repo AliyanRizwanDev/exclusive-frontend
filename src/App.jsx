@@ -6,6 +6,7 @@ import { Login } from './pages/login';
 import { SignUp } from './pages/signup';
 import { Home } from './pages';
 import { IoCartOutline } from 'react-icons/io5';
+import { Products } from './pages/products';
 
 function App() {
   const location = useLocation();
@@ -22,7 +23,9 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/shopnow" element={<Home />} />
         <Route path="/login" element={<Login />} />
-        <Route path="/signup" element={<SignUp />} /> 
+        <Route path="/signup" element={<SignUp />} />
+        <Route path="/products" element={<Products/>} /> 
+
       </Routes>
       <Footer />
     </div>
