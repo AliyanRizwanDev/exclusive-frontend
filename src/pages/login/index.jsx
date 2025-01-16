@@ -1,11 +1,14 @@
 import React, { useState } from "react"; 
 import { InputField } from "../../components/common/InputField";
+import { useNavigate } from "react-router-dom"; 
 
 export const Login = () => {
   const [formValues, setFormValues] = useState({
     email: "",
     password: "",
   });
+
+  const navigate = useNavigate(); 
 
   const handleInputChange = (field, value) => {
     setFormValues({ ...formValues, [field]: value });
@@ -44,17 +47,21 @@ export const Login = () => {
     });
   };
 
+  const navigateToSignUp = () => {
+    navigate("/signup"); 
+  };
+
   return (
     <div className="w-full h-fit py-10">
-      <div className="w-full h-full flex flex-col lg:flex-row ">
-        <div className="w-[55%] h-fit hidden lg:block">
+      <div className="w-full h-full  flex flex-col lg:flex-row ">
+        <div className="w-[55%] h-fit  hidden lg:block">
           <img
             className="w-full h-[600px] object-cover"
             src="./assets/signup-Image/Side-Image.svg"
             alt="Signup"
           />
         </div>
-        <div className="flex-1 justify-center h-fit lg:h-[600px] px-5 flex items-start lg:items-center">
+        <div className="flex-1 flex-col gap-y-6 justify-center h-fit lg:h-[600px] px-5 flex items-start lg:items-center">
           <div className="w-full max-w-[980px] lg:max-w-[420px] h-fit flex flex-col gap-y-7">
             <div className="w-full h-fit flex flex-col gap-y-2">
               <h1 className="text-2xl font-medium tracking-wider ">
@@ -85,6 +92,17 @@ export const Login = () => {
                 Forgot Password?
               </h1>
             </div>
+          </div>
+          <div className="w-full h-fit flex justify-center items-center gap-x-2 marker:">
+            <h1 className="font-normal text-gray-600 text-xs">
+              Don't have an account?
+            </h1>
+            <h1
+              className="font-semibold text-gray-600 text-xs cursor-pointer hover:underline"
+              onClick={navigateToSignUp} 
+            >
+              Sign Up
+            </h1>
           </div>
         </div>
       </div>

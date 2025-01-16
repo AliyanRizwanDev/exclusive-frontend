@@ -19,6 +19,9 @@ alert("Input field is Empty !")
     }
   };
 
+  const navigateToLoginUp = () => {
+    navigate("/login"); 
+  };
   return (
     <div className="w-full h-auto shadow-lg border-b-2 border-gray-300 flex flex-col">
       {/* Top section */}
@@ -61,14 +64,14 @@ alert("Input field is Empty !")
             </li>
             <li
               className="cursor-pointer hover:underline"
-              onClick={() => navigate("/signup")} 
+              onClick={() => navigate("/products")} 
             >
-              Sign Up
+              products
             </li>
           </ul>
         </div>
         <div className="w-fit flex gap-x-3 items-center">
-          <div className="w-full md:w-fit mt-4 md:mt-0 flex items-center bg-gray-100 px-3 py-2 rounded-md shadow-sm">
+          <div className="w-full  md:w-fit mt-4 md:mt-0 flex items-center bg-gray-100 px-3 py-2 rounded-md shadow-sm">
             <input
               className="bg-transparent text-xs md:text-sm w-full md:w-36 lg:w-56 outline-none placeholder-gray-500 px-2 font-normal capitalize placeholder:font-normal"
               type="text"
@@ -81,6 +84,7 @@ alert("Input field is Empty !")
               className="w-5 h-5 cursor-pointer text-gray-600 "
             />
           </div>
+            <button  onClick={navigateToLoginUp} className="bg-black px-4 rounded-md py-2 text-white font-medium transition-all duration-300 mt-4 md:mt-0 text-xs md:text-sm hover:bg-gray-500">Login</button>
           {cartIcon && <div className="text-xl cursor-pointer mt-3 md:mt-0">{cartIcon}</div>}
         </div>
       </div>
