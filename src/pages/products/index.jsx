@@ -2,10 +2,17 @@ import React, { useState } from "react";
 import { homeItemDetails, homeItemImages } from "../../utils/data";
 import { FaRegEye, FaRegHeart } from "react-icons/fa";
 import Select from "react-select"; 
+import { useNavigate } from "react-router-dom";
 
 export const Products = () => {
   const [selectedOption, setSelectedOption] = useState(null);
   const [sortedItems, setSortedItems] = useState(homeItemImages.homeItems);
+  const navigate = useNavigate();
+
+
+  const navigateToLoginUp = () => {
+    navigate("/productDetailPage"); 
+  };
 
   const options = [
     { value: 'Sort By A To Z', label: 'Sort By A To Z' },
@@ -61,7 +68,7 @@ export const Products = () => {
         </div>
       </div>
 
-      <div className="w-full h-fit py-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+      <div onClick={navigateToLoginUp} className="w-full h-fit py-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
         {sortedItems.map((item, index) => (
           <div
             key={index}

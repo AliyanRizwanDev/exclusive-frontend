@@ -90,14 +90,14 @@ export const Home = () => {
           </Slider>
         </div>
       </div>
-   <div className="w-full h-fit px-7 md:px-14 lg:px-16 xl:px-24 py-10">
+      <div className="w-full h-fit px-7 md:px-14 lg:px-16 xl:px-24 py-10">
         <div className="w-full h-fit flex flex-col gap-y-4">
           <div className="w-full h-fit">
             <div className="w-full h-fit flex flex-col gap-y-6">
               <div className="w-fit h-fit flex gap-x-4 items-center">
                 <div className="w-5 h-9 bg-[#DB4444] rounded-sm"></div>
                 <h1 className="text-[#DB4444] text-sm lg:text-base font-semibold">
-                Today’s
+                  Today’s
                 </h1>
               </div>
               <div className="w-full h-fit flex flex-col md:flex-row justify-start  md:justify-between items-start md:items-center gap-y-5 md:gap-y-0">
@@ -108,16 +108,15 @@ export const Home = () => {
 
           <div className="w-full h-fit">
             <div className="w-full py-6 flex overflow-x-auto overflow-y-hidden gap-x-10 scrollbar-hidden">
-            <HomeTodays/>
+              <HomeTodays />
             </div>
           </div>
           <div className="w-full h-fit flex justify-center items-center">
-          <button className="w-fit px-7 lg:px-9 rounded-md py-3 lg:py-4 bg-[#DB4444] text-sm lg:text-base font-medium text-white transition-all duration-300 hover:bg-red-400">
-            View All Products
-          </button>
+            <button className="w-fit px-7 lg:px-9 rounded-md py-3 lg:py-4 bg-[#DB4444] text-sm lg:text-base font-medium text-white transition-all duration-300 hover:bg-red-400">
+              View All Products
+            </button>
+          </div>
         </div>
-        </div>
-        
       </div>
 
       {/* Browse By Category */}

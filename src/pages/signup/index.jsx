@@ -1,6 +1,8 @@
+
 import React, { useState } from "react";
 import { InputField } from "../../components/common/InputField";
 import { Button } from "../../components/common/Button";
+import { useNavigate } from "react-router-dom";
 
 export const SignUp = () => {
   const [formValues, setFormValues] = useState({
@@ -9,15 +11,21 @@ export const SignUp = () => {
     password: "",
   });
 
+  const navigate = useNavigate(); 
+  
+  const navigateToLoginUp = () => {
+    navigate("/login"); 
+  };
   const handleInputChange = (field, value) => {
     setFormValues({ ...formValues, [field]: value });
   };
 
+
   const handleInputVal = () => {
-    const nameRegex = /^[a-zA-Z ]{2,}$/; 
+    const nameRegex = /^[a-zA-Z ]{2,}$/;
     const emailOrPhoneRegex =
       /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$|^\+?[0-9]{10,15}$/;
-      const passwordRegex = /^.{8,}$/; 
+    const passwordRegex = /^.{8,}$/;
 
     if (!formValues.name || !formValues.email || !formValues.password) {
       alert("All fields are required!");
@@ -25,7 +33,9 @@ export const SignUp = () => {
     }
 
     if (!nameRegex.test(formValues.name)) {
-      alert("Name must be at least 2 characters long and contain only letters and spaces!");
+      alert(
+        "Name must be at least 2 characters long and contain only letters and spaces!"
+      );
       return;
     }
 
@@ -69,7 +79,9 @@ export const SignUp = () => {
               <h1 className="text-2xl font-medium tracking-wider ">
                 Create an account
               </h1>
-              <h1 className="text-base font-normal">Enter your details below</h1>
+              <h1 className="text-base font-normal">
+                Enter your details below
+              </h1>
             </div>
             <div className="w-full h-fit flex flex-col gap-y-7">
               <InputField
@@ -88,12 +100,18 @@ export const SignUp = () => {
                 onChange={(value) => handleInputChange("password", value)}
               />
               <div className="flex flex-col gap-y-2 w-full">
-                <Button label={"Create Account"} handleInputVal={handleInputVal} />
+                <Button
+                  label={"Create Account"}
+                  handleInputVal={handleInputVal}
+                />
                 <div className="w-full h-fit flex justify-center items-center gap-x-2">
                   <h1 className="font-normal text-gray-600 text-xs">
                     Already have an account?
                   </h1>
-                  <h1 className="font-semibold text-gray-600 text-xs cursor-pointer hover:underline">
+                  <h1
+                    onClick={navigateToLoginUp}
+                    className="font-semibold text-gray-600 text-xs cursor-pointer hover:underline"
+                  >
                     Login
                   </h1>
                 </div>
