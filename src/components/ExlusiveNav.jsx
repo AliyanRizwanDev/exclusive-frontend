@@ -61,9 +61,9 @@ alert("Input field is Empty !")
             </li>
             <li
               className="cursor-pointer hover:underline"
-              onClick={() => navigate("/signup")} 
+              onClick={() => navigate("/products")} 
             >
-              Sign Up
+              Products
             </li>
           </ul>
         </div>

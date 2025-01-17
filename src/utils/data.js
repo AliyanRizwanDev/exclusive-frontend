@@ -34,9 +34,10 @@ export const homeItemImages = {
 // homeItemDetails
 export const homeItemDetails = {
   title: "HAVIT HV-G92 Gamepad",
-  price: "$120",
+  price: "$ 120",
   priviousPrice: "$160",
-  rating : "(38)"
+  rating : "(38)",
+  detail :"PlayStation 5 Controller Skin High quality vinyl with air channel adhesive for easy bubble free install & mess free removal Pressure sensitive."
 };
 // delivery promise
 export const delivery = {
@@ -55,3 +56,8 @@ export const delivery = {
     GUARANTEE: "100% GUARANTEE",
    priceAndDelivery: "For all purchases",
  };
+
+//  ProductDiscount
+export const ProductDiscount = {
+  discount : "-40%",
+};
