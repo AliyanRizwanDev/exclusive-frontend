@@ -8,6 +8,7 @@ import { Home } from './pages';
 import { IoCartOutline } from 'react-icons/io5';
 import { Products } from './pages/products';
 import { ProductDetailPage } from './pages/productDetailPage';
+import { ContactUs } from './pages/contact Us';
 
 function App() {
   const location = useLocation();
@@ -27,6 +28,7 @@ function App() {
         <Route path="/signup" element={<SignUp />} />
         <Route path="/products" element={<Products/>} /> 
         <Route path="/productDetailPage" element={<ProductDetailPage/>} /> 
+        <Route path="/contact" element={<ContactUs/>} /> 
 
       </Routes>
       <Footer />

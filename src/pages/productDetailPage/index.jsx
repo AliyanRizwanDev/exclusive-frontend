@@ -36,7 +36,7 @@ export const ProductDetailPage = () => {
             <h1 className="text-lg sm:text-2xl">{homeItemDetails.title}</h1>
             <div className="w-fit h-fit flex gap-x-2 items-center">
               <h1 className="text-sm sm:text-base font-normal">Reviews :</h1>
-              <h1 className="text-sm font-normal">{homeItemDetails.rating}</h1>
+              <h1 className="text-sm font-normal pt-1">{homeItemDetails.rating}</h1>
             </div>
             <h1 className="text-lg sm:text-2xl font-normal">{homeItemDetails.price}</h1>
             <h1 className="text-sm font-normal w-full sm:w-[340px]">{homeItemDetails.detail}</h1>
@@ -53,7 +53,7 @@ export const ProductDetailPage = () => {
               ))}
             </div>
 
-            <div className="w-fit h-fit flex items-center gap-x-4">
+            <div className="w-fit h-fit flex items-center gap-x-4 mt-2">
               <h1 className="text-base sm:text-xl font-normal">Size :</h1>
               {["XS", "S", "M", "L", "XL"].map((size) => (
                 <div
@@ -63,7 +63,7 @@ export const ProductDetailPage = () => {
                   ${
                     selectedSize === size
                       ? "bg-red-500 text-white"
-                      : "border-2 border-gray-400 text-black"
+                      : "border border-gray-400 text-black"
                   }`}
                 >
                   <h1 className="text-xs font-medium">{size}</h1>
@@ -71,15 +71,15 @@ export const ProductDetailPage = () => {
               ))}
             </div>
 
-            <div className="w-full h-fit flex gap-x-6 justify-between sm:pr-16">
+            <div className="w-full h-fit flex gap-x-6 justify-between sm:pr-16 mt-2">
               <div className="w-fit h-fit flex items-center">
-                <div   onClick={() => setCounter((temp) => (temp > 0 ? temp - 1 : 0))}  className="w-8 h-8 flex justify-center font-normal rounded-sm text-xl cursor-pointer items-center border border-gray-400">
+                <div   onClick={() => setCounter((temp) => (temp > 0 ? temp - 1 : 0))}  className="w-8 h-8 flex justify-center font-normal rounded-sm text-xl cursor-pointer items-center border border-gray-400 transition-all duration-300 hover:bg-[#DB4444] hover:border-0  hover:text-white">
                   -
                 </div>
                 <div className="w-8 h-8 flex justify-center px-8 rounded-sm text-base font-normal items-center border border-gray-400">
                   {counter}
                 </div>
-                <div onClick={()=> setCounter(counter + 1)}  className="w-8 h-8 flex justify-center font-normal rounded-sm text-xl cursor-pointer items-center border border-gray-400">
+                <div onClick={()=> setCounter(counter + 1)}  className="w-8 h-8 flex justify-center font-normal rounded-sm text-xl cursor-pointer items-center border border-gray-400  transition-all duration-300  hover:bg-[#DB4444] hover:text-white hover:border-0">
                   +
                 </div>
               </div>
@@ -107,14 +107,14 @@ export const ProductDetailPage = () => {
           </div>
         </div>
 
-        <div className="w-full h-fit">
+        <div className="w-full h-fit mt-36">
           <div className="w-full h-fit flex items-center gap-x-4">
             <div className="w-6 h-11 bg-red-500"></div>
             <h1 className="text-sm sm:text-base font-semibold text-red-500">Related Item</h1>
           </div>
         </div>
 
-        <div className="w-full py-6 flex overflow-x-auto gap-x-10 scrollbar-hidden">
+        <div className="w-full py-6 flex overflow-x-auto gap-x-10 scrollbar-hidden pb-20">
           <div className="w-full h-fit flex flex-col gap-y-8">
             <div   onClick={() => navigate("/products")}  className="flex gap-x-9 cursor-pointer">
               {homeItemImages.homeItems.map((item, index) => (
