@@ -84,7 +84,7 @@ alert("Input field is Empty !")
             />
           </div>
           <button  onClick={navigateToLoginUp} className="bg-black px-4 rounded-md py-2 text-white font-medium transition-all duration-300 mt-4 md:mt-0 text-xs md:text-sm hover:bg-gray-500">Login</button>
-          {cartIcon && <div className="text-xl cursor-pointer mt-3 md:mt-0">{cartIcon}</div>}
+          {cartIcon && <div className="text-xl cursor-pointer mt-3 md:mt-0 flex  items-center gap-x-1">{cartIcon} <h1 className="text-sm font-normal">0</h1></div>}
         </div>
       </div>
     </div>

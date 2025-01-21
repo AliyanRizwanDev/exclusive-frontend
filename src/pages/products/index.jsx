@@ -1,14 +1,27 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { homeItemDetails, homeItemImages } from "../../utils/data";
 import { FaRegEye, FaRegHeart } from "react-icons/fa";
 import Select from "react-select"; 
 import { useNavigate } from "react-router-dom";
+import axios from "axios";
 
 export const Products = () => {
   const [selectedOption, setSelectedOption] = useState(null);
   const [sortedItems, setSortedItems] = useState(homeItemImages.homeItems);
   const navigate = useNavigate();
 
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await axios.get("http://192.168.18.134:3000/api/product");
+        console.log("Fetched data:", response.data);
+      } catch (error) {
+        console.error("Error fetching data:", error)
+      }
+    };
+
+    fetchData();
+  }, []);
 
   const navigateToLoginUp = () => {
     navigate("/productDetailPage"); 

@@ -13,15 +13,19 @@ export const ProductDetailPage = () => {
     setSelectedSize(size);
   };
   const navigate = useNavigate();
+  const navigateproduct = () => {
+    navigate("/products"); 
+  };
 
   return (
     <div className="w-full h-fit px-4 md:px-10 lg:px-20">
       <div className="w-full h-fit flex flex-col gap-y-5">
         <div className="w-fit h-fit pt-5 flex gap-x-3 items-center">
-          <h1 className="text-sm font-medium text-gray-500">Products</h1>
+          <h1 onClick={navigateproduct} className="text-sm cursor-pointer font-medium text-gray-500">Products</h1>
           <h1 className="text-sm font-medium text-gray-500">/</h1>
-          <h1 className="text-sm font-medium text-gray-500">Gaming</h1>
-          <h1 className="text-sm font-medium text-black">{homeItemDetails.title}</h1>
+          <h1 className="text-sm font-medium cursor-pointer text-gray-500">Gaming</h1>
+          <h1 className="text-sm font-medium text-gray-500">/</h1>
+          <h1 className="text-sm font-medium  text-black">{homeItemDetails.title}</h1>
         </div>
 
         <div className="w-full h-fit flex flex-col lg:flex-row justify-center gap-8">

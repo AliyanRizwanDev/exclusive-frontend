@@ -1,8 +1,8 @@
-
 import React, { useState } from "react";
 import { InputField } from "../../components/common/InputField";
 import { Button } from "../../components/common/Button";
 import { useNavigate } from "react-router-dom";
+import axios from "axios";
 
 export const SignUp = () => {
   const [formValues, setFormValues] = useState({
@@ -10,22 +10,41 @@ export const SignUp = () => {
     email: "",
     password: "",
   });
+  const navigate = useNavigate();
 
-  const navigate = useNavigate(); 
-  
   const navigateToLoginUp = () => {
-    navigate("/login"); 
+    navigate("/login");
   };
+
   const handleInputChange = (field, value) => {
     setFormValues({ ...formValues, [field]: value });
   };
 
+  const handleSignUp = async () => {
+    try {
+      const response = await axios.post("http://192.168.18.134:3000/api/signup", {
+        name: formValues.name,
+        email_phone: formValues.email,
+        password: formValues.password,
+      });
+
+      if (response.status === 200 || response.status === 201) {
+        alert("Account created successfully!");
+        navigateToLoginUp();
+      } else {
+        alert("Something went wrong. Please try again.");
+      }
+    } catch (error) {
+      console.error("Sign-up error:", error);
+      alert("Failed to create an account. Please check your details or try again later.");
+    }
+  };
 
   const handleInputVal = () => {
     const nameRegex = /^[a-zA-Z ]{2,}$/;
     const emailOrPhoneRegex =
       /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$|^\+?[0-9]{10,15}$/;
-    const passwordRegex = /^.{8,}$/;
+    const passwordRegex = /^.{6,}$/;
 
     if (!formValues.name || !formValues.email || !formValues.password) {
       alert("All fields are required!");
@@ -33,9 +52,7 @@ export const SignUp = () => {
     }
 
     if (!nameRegex.test(formValues.name)) {
-      alert(
-        "Name must be at least 2 characters long and contain only letters and spaces!"
-      );
+      alert("Name must be at least 2 characters long and contain only letters and spaces!");
       return;
     }
 
@@ -45,22 +62,11 @@ export const SignUp = () => {
     }
 
     if (!passwordRegex.test(formValues.password)) {
-      alert(
-        "Password must be at least 8 characters long and include both letters and numbers!"
-      );
+      alert("Password must be at least 6 characters long!");
       return;
     }
 
-    const formattedValues = Object.entries(formValues)
-      .map(([key, value]) => `${key}: ${value}`)
-      .join("\n");
-    console.log("Input Values:\n" + formattedValues);
-
-    setFormValues({
-      name: "",
-      email: "",
-      password: "",
-    });
+    handleSignUp();
   };
 
   return (

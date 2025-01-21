@@ -1,6 +1,7 @@
-import React, { useState } from "react"; 
+import React, { useState } from "react";
 import { InputField } from "../../components/common/InputField";
-import { useNavigate } from "react-router-dom"; 
+import { useNavigate } from "react-router-dom";
+import axios from "axios";
 
 export const Login = () => {
   const [formValues, setFormValues] = useState({
@@ -8,16 +9,16 @@ export const Login = () => {
     password: "",
   });
 
-  const navigate = useNavigate(); 
+  const navigate = useNavigate();
 
   const handleInputChange = (field, value) => {
     setFormValues({ ...formValues, [field]: value });
   };
 
-  const handleInputVal = () => {
+  const handleInputVal = async () => {
     const emailOrPhoneRegex =
       /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$|^\+?[0-9]{10,15}$/;
-   const passwordRegex = /^.{8,}$/; 
+    const passwordRegex = /^.{6,}$/;
 
     if (!formValues.email || !formValues.password) {
       alert("All fields are required!");
@@ -30,31 +31,31 @@ export const Login = () => {
     }
 
     if (!passwordRegex.test(formValues.password)) {
-      alert(
-        "Password must be at least 8 characters long and include both letters and numbers!"
-      );
+      alert("Password must be at least 6 characters long!");
       return;
     }
 
-    const formattedValues = Object.entries(formValues)
-      .map(([key, value]) => `${key}: ${value}`)
-      .join("\n");
-    console.log("Input Values:\n" + formattedValues);
+    try {
+      const response = await axios.post("http://192.168.18.134:3000/api/login", {
+        email_phone: formValues.email,
+        password: formValues.password,
+      });
 
-    setFormValues({
-      email: "",
-      password: "",
-    });
+        alert(response.data.message);
+        navigate("/shopnow"); 
+    } catch (error) {
+      console.error("Login error:", error);
+    }
   };
 
   const navigateToSignUp = () => {
-    navigate("/signup"); 
+    navigate("/signup");
   };
 
   return (
     <div className="w-full h-fit py-10">
-      <div className="w-full h-full  flex flex-col lg:flex-row ">
-        <div className="w-[55%] h-fit  hidden lg:block">
+      <div className="w-full h-full flex flex-col lg:flex-row">
+        <div className="w-[55%] h-fit hidden lg:block">
           <img
             className="w-full h-[600px] object-cover"
             src="./assets/signup-Image/Side-Image.svg"
@@ -67,9 +68,7 @@ export const Login = () => {
               <h1 className="text-2xl font-medium tracking-wider ">
                 Log in to Exclusive
               </h1>
-              <h1 className="text-base font-normal">
-                Enter your details below
-              </h1>
+              <h1 className="text-base font-normal">Enter your details below</h1>
             </div>
             <InputField
               label={"Email or Phone Number"}
@@ -81,6 +80,7 @@ export const Login = () => {
               value={formValues.password}
               onChange={(value) => handleInputChange("password", value)}
             />
+            
             <div className="w-full h-fit flex items-center justify-between">
               <button
                 onClick={handleInputVal}
@@ -93,13 +93,13 @@ export const Login = () => {
               </h1>
             </div>
           </div>
-          <div className="w-full h-fit flex justify-center items-center gap-x-2 marker:">
+          <div className="w-full h-fit flex justify-center items-center gap-x-2">
             <h1 className="font-normal text-gray-600 text-xs">
               Don't have an account?
             </h1>
             <h1
               className="font-semibold text-gray-600 text-xs cursor-pointer hover:underline"
-              onClick={navigateToSignUp} 
+              onClick={navigateToSignUp}
             >
               Sign Up
             </h1>

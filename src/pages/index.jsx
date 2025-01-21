@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   homeItemImages,
   homeItemDetails,
@@ -21,8 +21,18 @@ import {
 import { MdOutlineVideogameAsset } from "react-icons/md";
 import { LiaShippingFastSolid } from "react-icons/lia";
 import { HomeTodays } from "../components/homeComponents/HomeTodays";
+import { useNavigate } from "react-router-dom";
 
 export const Home = () => {
+  const navigate = useNavigate(); 
+  const navigateToSignUp = () => {
+    navigate("/products"); 
+  };
+
+const [homeCounter , setHomeCounter] = useState(0)
+
+
+
   const settings = {
     dots: true,
     infinite: true,
@@ -112,7 +122,7 @@ export const Home = () => {
             </div>
           </div>
           <div className="w-full h-fit flex justify-center items-center">
-            <button className="w-fit px-7 lg:px-9 rounded-md py-3 lg:py-4 bg-[#DB4444] text-sm lg:text-base font-medium text-white transition-all duration-300 hover:bg-red-400">
+            <button onClick={navigateToSignUp} className="w-fit px-7 lg:px-9 rounded-md py-3 lg:py-4 bg-[#DB4444] text-sm lg:text-base font-medium text-white transition-all duration-300 hover:bg-red-400">
               View All Products
             </button>
           </div>
@@ -173,7 +183,7 @@ export const Home = () => {
               </div>
               <div className="w-full h-fit flex flex-col md:flex-row justify-start  md:justify-between items-start md:items-center gap-y-5 md:gap-y-0">
                 <h1 className="text-2xl lg:text-4xl">Best Selling Products</h1>
-                <button className="w-fit px-5 rounded-md py-4  bg-[#DB4444] text-sm font-medium text-white transition-all duration-300 hover:bg-red-400">
+                <button onClick={navigateToSignUp}  className="w-fit px-5 rounded-md py-4  bg-[#DB4444] text-sm font-medium text-white transition-all duration-300 hover:bg-red-400">
                   View All Products
                 </button>
               </div>
