@@ -69,3 +69,13 @@ export const ContactUsDetail = {
   email1: "customer@exclusive.com",
   email2: "support@exclusive.com",
 };
+
+
+//  About Detail
+export const AboutDetail = {
+  title: "Our Story",
+  detail1: "Launced in 2015, Exclusive is South Asia’s premier online shopping makterplace with an active presense in Bangladesh. Supported by wide range of tailored marketing, data and service solutions, Exclusive has 10,500 sallers and 300 brands and serves 3 millioons customers across the region. ",
+  detail2: "Exclusive has more than 1 Million products to offer, growing at a very fast. Exclusive offers a diverse assotment in categories ranging  from consumer.",
+  sales_active:"10.5k ",
+  
+};

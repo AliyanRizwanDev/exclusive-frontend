@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import {
   homeItemImages,
   homeItemDetails,
@@ -22,6 +22,7 @@ import { MdOutlineVideogameAsset } from "react-icons/md";
 import { LiaShippingFastSolid } from "react-icons/lia";
 import { HomeTodays } from "../components/homeComponents/HomeTodays";
 import { useNavigate } from "react-router-dom";
+import axios from "axios";
 
 export const Home = () => {
   const navigate = useNavigate(); 
@@ -29,9 +30,7 @@ export const Home = () => {
     navigate("/products"); 
   };
 
-const [homeCounter , setHomeCounter] = useState(0)
-
-
+  const [bestSelling, setbestSelling] = useState([]);
 
   const settings = {
     dots: true,
@@ -44,6 +43,21 @@ const [homeCounter , setHomeCounter] = useState(0)
     arrows: false,
   };
 
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await axios.get("http://192.168.18.134:3000/api/product");
+        console.log("Fetched Data Products:", response.data.data); 
+        setbestSelling(response.data.data)
+        console.log("Fetched Data state:", bestSelling); 
+
+      } catch (error) {
+        console.error("Error fetching data:", error);
+      }
+    };
+
+    fetchData();
+  }, []);
   return (
     <div className="w-full h-fit overflow-x-hidden overflow-y-hidden">
       <div className="w-full h-80 px-7 md:px-14 lg:px-20 xl:px-20 pt-4 flex flex-col lg:flex-row gap-x-10">
@@ -194,14 +208,14 @@ const [homeCounter , setHomeCounter] = useState(0)
             <div className="w-full py-6 flex overflow-x-auto overflow-y-hidden gap-x-10 scrollbar-hidden">
               <div className="w-full h-fit flex flex-col gap-y-8">
                 <div className="flex gap-x-9">
-                  {homeItemImages.homeItems.map((item, index) => (
+                  {bestSelling.map((item, index) => (
                     <div
-                      key={index}
+                       key={item.id || index}
                       className="min-w-[250px] lg:min-w-[282px] h-fit flex flex-col gap-y-4 pb-3"
                     >
-                      <div className="min-w-[250px] h-48 lg:h-60 border bg-[#F5F5F5] cursor-pointer border-gray-300 flex justify-center items-center relative group">
+                      <div className="min-w-[250px] h-48 lg:h-60 border  cursor-pointer border-gray-300 flex justify-center items-center relative group">
                         <img
-                          src={item.src}
+                          src={item.images[0]}
                           alt={item.alt}
                           className="w-40 h-40 object-contain"
                         />
@@ -219,20 +233,20 @@ const [homeCounter , setHomeCounter] = useState(0)
                       </div>
                       <div className="w-[282px] h-fit flex flex-col gap-y-1">
                         <h1 className="text-sm lg:text-base font-medium">
-                          {homeItemDetails.title}
+                          {item.name}
                         </h1>
                         <div className="w-fit h-fit flex gap-x-3">
                           <h1 className="text-sm lg:text-base font-medium">
-                            {homeItemDetails.price}
+                            ${item.price}
                           </h1>
                           <h1 className="text-sm lg:text-base font-medium line-through text-gray-500">
-                            {homeItemDetails.priviousPrice}
+                            ${item.discounted_price}
                           </h1>
                         </div>
                         <div className="w-fit h-fit flex gap-x-2 items-center">
                           <h1 className="text-sm font-medium">Review :</h1>
                           <h1 className="text-xs font-medium pt-[2px]">
-                            {homeItemDetails.rating}
+                            {item.rating}
                           </h1>
                         </div>
                       </div>
