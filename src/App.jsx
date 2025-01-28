@@ -11,6 +11,7 @@ import { ProductDetailPage } from './pages/productDetailPage';
 import { ContactUs } from './pages/contact Us';
 import { AddToCart } from './pages/addToCart';
 import { About } from './pages/about/about';
+import { AdminPanel } from './pages/adminPanel';
 
 function App() {
   const location = useLocation();
@@ -33,6 +34,7 @@ function App() {
         <Route path="/contact" element={<ContactUs/>} /> 
         <Route path="/cart" element={<AddToCart/>} /> 
         <Route path="/about" element={<About/>} /> 
+        <Route path="/admin" element={<AdminPanel/>} /> 
 
       </Routes>
       <Footer />

@@ -16,38 +16,51 @@ export const Login = () => {
   };
 
   const handleInputVal = async () => {
+    const adminEmail = "admin123@gmail.com";
+    const adminPassword = "admin12";
+  
     const emailOrPhoneRegex =
       /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$|^\+?[0-9]{10,15}$/;
     const passwordRegex = /^.{6,}$/;
-
+  
     if (!formValues.email || !formValues.password) {
       alert("All fields are required!");
       return;
     }
-
+  
     if (!emailOrPhoneRegex.test(formValues.email)) {
       alert("Please enter a valid email or phone number!");
       return;
     }
-
+  
     if (!passwordRegex.test(formValues.password)) {
       alert("Password must be at least 6 characters long!");
       return;
     }
-
+  
+    if (
+      formValues.email === adminEmail &&
+      formValues.password === adminPassword
+    ) {
+      alert("Welcome, Admin!");
+      navigate("/admin"); 
+      return;
+    }
+  
     try {
       const response = await axios.post("http://192.168.18.134:3000/api/login", {
         email_phone: formValues.email,
         password: formValues.password,
       });
-
-        alert(response.data.message);
-        navigate("/shopnow"); 
+  
+      alert(response.data.message);
+      navigate("/shopnow");
     } catch (error) {
       console.error("Login error:", error);
+      alert("Login failed. Please try again.");
     }
   };
-
+  
   const navigateToSignUp = () => {
     navigate("/signup");
   };
